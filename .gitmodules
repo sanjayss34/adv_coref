@@ -1,0 +1,6 @@
+[submodule "gap_coreference"]
+	path = gap_coreference
+	url = https://github.com/google-research-datasets/gap-coreference
+[submodule "reference-coreference-scorers"]
+	path = reference-coreference-scorers
+	url = https://github.com/conll/reference-coreference-scorers

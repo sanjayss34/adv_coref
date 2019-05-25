@@ -17,10 +17,10 @@ python json_to_conll.py test.english.replace.lee2018.jsonlines test.english.repl
 python json_to_conll.py test.english.replace.adv.jsonlines test.english.replace.adv.conll n
 
 # Run official CoNLL-2012 Scorer
-perl conll-2012/scorer/v8.01/scorer.pl all test.english.conll test.english.lee2018.conll > conll_output_lee2018.txt
-perl conll-2012/scorer/v8.01/scorer.pl all test.english.conll test.english.adv.conll > conll_output_adv.txt
-perl conll-2012/scorer/v8.01/scorer.pl all test.english.replace.conll test.english.replace.lee2018.conll > conll_output_replace_lee2018.txt
-perl conll-2012/scorer/v8.01/scorer.pl all test.english.replace.conll test.english.replace.adv.conll > conll_output_replace_adv.txt
+perl reference-coreference-scorers/scorer.pl all test.english.conll test.english.lee2018.conll > conll_output_lee2018.txt
+perl reference-coreference-scorers/scorer.pl all test.english.conll test.english.adv.conll > conll_output_adv.txt
+perl reference-coreference-scorers/scorer.pl all test.english.replace.conll test.english.replace.lee2018.conll > conll_output_replace_lee2018.txt
+perl reference-coreference-scorers/scorer.pl all test.english.replace.conll test.english.replace.adv.conll > conll_output_replace_adv.txt
 
 # Report results for Original CoNLL-2012 Test Set
 python compute_conll_f1.py conll_output_lee2018.txt OriginalCoNLLTest_Lee2018
