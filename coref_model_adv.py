@@ -18,7 +18,6 @@ import util
 import coref_ops
 import conll
 import metrics
-# from replace_data import randomly_insert_names, perturb_nominals
 
 class CorefModel(object):
   def __init__(self, config):

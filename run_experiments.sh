@@ -1,5 +1,6 @@
 export GAP_ROOT=gap_coreference/
 
+touch "${GAP_ROOT}__init__.py"
 # Original CoNLL-2012 test set experiments
 python evaluate_conll.py final test.english.all.entity.jsonlines test.english.lee2018.jsonlines
 python evaluate_conll.py final test.english.all.entity.jsonlines test.english.adv.jsonlines adv
