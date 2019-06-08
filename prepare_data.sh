@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# python minimize_with_ner.py test all PER,GPE,ORG
 python minimize_with_ner.py test per PER
 python minimize_with_ner.py test gpe GPE
 python merge_ner_types.py test.english.per.jsonlines test.english.gpe.jsonlines test.english.all.jsonlines

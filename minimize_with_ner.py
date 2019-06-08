@@ -76,21 +76,7 @@ def normalize_word(word):
   else:
     return word
 
-def list_includes(lst, element):
-    count = 0
-    for el in lst:
-        if el == 'PER':
-            if 'PERSON' in element:
-                count += 1
-        elif el in element:
-            count += 1
-    if count > 1:
-        print(element)
-    if count > 0:
-        return True
-    return False
-
-def handle_line(line, document_state, ner_types):
+def handle_line(line, document_state, ner_type):
   begin_document_match = re.match(conll.BEGIN_DOCUMENT_REGEX, line)
   if begin_document_match:
     document_state.assert_empty()
@@ -132,7 +118,7 @@ def handle_line(line, document_state, ner_types):
           cluster_id = int(segment[:-1])
           start = document_state.stacks[cluster_id].pop()
           document_state.clusters[cluster_id].append((start, word_index))
-    if list_includes(ner_types, person):
+    if ner_type in person:
         t = regex.sub('', person)
         if ')' in person:
             document_state.people.append((word_index, word_index))
@@ -143,7 +129,7 @@ def handle_line(line, document_state, ner_types):
         document_state.person_start = None
     return None
 
-def minimize_partition(name, language, extension, label="", ner_types=[]):
+def minimize_partition(name, language, extension, label="", ner_type=""):
   input_path = "{}.{}.{}".format(name, language, extension)
   output_path = "{}.{}.{}.jsonlines".format(name, language, label)
   count = 0
@@ -152,7 +138,9 @@ def minimize_partition(name, language, extension, label="", ner_types=[]):
     with open(output_path, "w") as output_file:
       document_state = DocumentState()
       for line in input_file.readlines():
-        document = handle_line(line, document_state, [t.upper() for t in ner_types])
+        if ner_type.upper() == 'PER':
+          ner_type = 'PERSON'
+        document = handle_line(line, document_state, ner_type.upper())
         if document is not None:
           output_file.write(json.dumps(document))
           output_file.write("\n")
@@ -160,11 +148,11 @@ def minimize_partition(name, language, extension, label="", ner_types=[]):
           document_state = DocumentState()
   print "Wrote {} documents to {}".format(count, output_path)
 
-def minimize_language(language, part, label, ner_types):
+def minimize_language(language, part, label, ner_type):
   if part == 'test':
-    minimize_partition(part, language, "v4_gold_conll", label, ner_types)
+    minimize_partition(part, language, "v4_gold_conll", label, ner_type)
   else:
-    minimize_partition(part, language, "v4_auto_conll", label, ner_types)
+    minimize_partition(part, language, "v4_auto_conll", label, ner_type)
 
 if __name__ == "__main__":
-  minimize_language("english", sys.argv[1], sys.argv[2], sys.argv[3].split(','))
+  minimize_language("english", sys.argv[1], sys.argv[2], sys.argv[3])
