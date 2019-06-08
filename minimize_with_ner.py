@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# This file is a modification of minimize.py from https://github.com/kentonl/e2e-coref
+
 import re
 import os
 import sys

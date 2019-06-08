@@ -11,6 +11,8 @@ Make sure to set the paths in ```experiments_adv.conf``` and ```replace_data.py`
 ## Reproducing Paper Results
 First, unzip the ```adv_checkpoint.zip``` file to yield the adv_checkpoint directory. To reproduce the results in the paper, please run ```prepare_data.sh``` and subsequently run ```run_experiments.sh``` when the repository is the working directory. Please note that by default the prepare_data.sh script loads the state of the random number generator that we used to generate replacement names to enable exact reproducibility of our results. If you would like generate replacement names at random, you need only comment out the relevant line in ```generate_noleakage.py```.
 The results should match those in the paper: http://cogcomp.org/papers/SubramanianRo19.pdf .
+## Acknowledgements
+Much of the code in this repository is from Kenton Lee's repository https://github.com/kentonl/e2e-coref or is adapted from code in that repository. That code is distributed under an Apache 2.0 license. The ```firstname-gender-score.txt``` gazetteer was provided by Sihao Chen.
 ## Citation
 If you use this work in your research, please cite our paper:
 ```

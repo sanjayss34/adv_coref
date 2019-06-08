@@ -1,3 +1,5 @@
+# This file is a modification of demo.py from https://github.com/kentonl/e2e-coref
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
