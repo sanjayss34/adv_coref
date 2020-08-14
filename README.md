@@ -3,8 +3,8 @@ This repository contains the code for reproducing the experiments in the paper "
 ## Requirements
 This code was tested using Python 2.7 and Ubuntu 16.04. The requirements.txt co
 ntains the packages and corresponding versions of the Python environment used fo
-r running this code. You will need to download the word embedding files necessar
-y for running the Lee et al. 2018 model. You will also need to download the chec
+r running this code. Please follow the ``Getting Started`` instructions in https://github.com/kentonl/e2e-coref
+to download necessary files (e.g. word embeddings). You will also need to download the chec
 kpoint for the Lee et al. 2018 model and insert the corresponding path in the lee2018_log_root field in ```experiments_adv.conf```. git-lfs was used to store the ```adv_checkpoint.zip``` file, so you may need git-lfs to clone the repository.
 ## Modify paths
 Make sure to set the paths in ```experiments_adv.conf``` and ```replace_data.py``` to be correct for your system. The allCountries.txt and countryInfo.txt files can be downloaded from geonames.org, and the last_names.txt file contains the last names from the 1990 census, which can be downloaded from https://www2.census.gov/topics/genealogy/1990surnames/dist.all.last#.
