@@ -38,7 +38,7 @@ msgpack-numpy==0.4.3.2
 multiprocess==0.70.7
 murmurhash==1.0.1
 nltk==3.4
-numpy==1.15.4
+numpy==1.22.0
 osqp==0.5.0
 pandas==0.24.1
 pathlib==1.0.1
